@@ -43,10 +43,8 @@ def parse_sbox(points, to_deg):
 
 
 class SBoxField(models.Field):
-    """
-    Index this field: CREATE INDEX frames_pstest_location
-    ON frames_pstest USING GIST (location);
-    """
+    description = 'A sbox type, spanning a range of ra a dec'
+
     def db_type(self, connection):
         return 'sbox'
 
@@ -81,10 +79,6 @@ class SboxContains(models.Lookup):
 
 
 class SPointField(models.Field):
-    """
-    Index this field: CREATE INDEX frames_pstest_location
-    ON frames_pstest USING GIST (location);
-    """
     description = 'A pgsphere spoint as a tuple (ra, dec) in degrees'
 
     def db_type(self, connection):
