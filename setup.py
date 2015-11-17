@@ -1,9 +1,6 @@
 import os
 from setuptools import setup
 
-with open(os.path.join(os.path.dirname(__file__), 'README.md')) as readme:
-    README = readme.read()
-
 # allow setup.py to be run from any path
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
@@ -14,7 +11,6 @@ setup(
     include_package_data=True,
     license='GPL',
     description='A django app that adds pgsphere fields to django models',
-    long_desciption=README,
     url='https://github.com/LCOGT/django-pgsphere',
     author='Austin Riba',
     author_email='ariba@lcogt.net',
@@ -29,4 +25,7 @@ setup(
         'Topic :: Internet :: WWW/HTTP',
         'TOPIC :: Internet :: WWW/HTTP :: Dynamic Content',
     ],
+    install_requires=[
+        'django'
+    ]
 )

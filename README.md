@@ -31,3 +31,10 @@ Installation
 2. add `pgsphere` to your INSTALLED_APPS
 3. Run migrations (insalls the pg_sphere postgresql extension): `./manage.py migrate`
 4. Use the fields in your models: `from pgsphere.fields import SPointField, SBoxField`
+
+Creating indexes
+================
+
+To create an index on a `SPointField` or `SBoxField` run the following on your postgresql table:
+
+    CREATE INDEX myapp_myapp_myfield ON myapp_mymodel USING GIST (field_name);
