@@ -26,6 +26,7 @@ setup(
         'TOPIC :: Internet :: WWW/HTTP :: Dynamic Content',
     ],
     install_requires=[
-        'django'
+        'django',
+        'psycopg2'
     ]
 )
