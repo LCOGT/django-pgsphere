@@ -38,3 +38,10 @@ Creating indexes
 To create an index on a `SPointField` or `SBoxField` run the following on your postgresql table:
 
     CREATE INDEX myapp_myapp_myfield ON myapp_mymodel USING GIST (field_name);
+
+Testing
+=======
+
+To run the tests, you must have a postgresql server running with
+[pgsphere](https://github.com/akorotkov/pgsphere) installed. See the `test_settings.py`
+file for connection details.
