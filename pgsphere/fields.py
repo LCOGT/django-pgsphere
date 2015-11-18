@@ -5,21 +5,13 @@ import collections
 import math
 
 
-def rad_to_deg(x):
-    return x / (math.pi / 180)
-
-
-def deg_to_rad(x):
-    return x * (math.pi / 180)
-
-
 def to_tuple(inval):
     try:
         val = make_tuple(inval)
     except (ValueError, SyntaxError):
-        raise ValidationError("Invalid input: '{0}'".format(inval))
+        raise ValidationError('Invalid input: "{0}"'.format(inval))
     if not isinstance(val, collections.Iterable):
-        raise ValidationError("Value must be a tuple")
+        raise ValidationError('Value must be a tuple')
     return val
 
 
@@ -29,9 +21,9 @@ def parse_spoint(point, to_deg):
     if len(point) != 2:
         raise ValidationError('Point has exactly two values: (ra, dec)')
     if to_deg:
-        return tuple(rad_to_deg(i) for i in point)
+        return tuple(math.degrees(i) for i in point)
     else:
-        return tuple(deg_to_rad(i) for i in point)
+        return tuple(math.radians(i) for i in point)
 
 
 def parse_sbox(points, to_deg):
@@ -100,8 +92,8 @@ class SPointField(models.Field):
             # value will be a tuple ((ra, dec), radius)
             point, radius = value
             return '<{0}, {1}>'.format(
-                tuple(deg_to_rad(x) for x in point),
-                deg_to_rad(radius)
+                tuple(math.radians(x) for x in point),
+                math.radians(radius)
             )
         else:
             raise TypeError('Lookup type %r not supported.' % lookup_type)
