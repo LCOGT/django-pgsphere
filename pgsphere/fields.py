@@ -6,11 +6,11 @@ import math
 
 
 def rad_to_deg(x):
-    return x / (math.pi/180)
+    return x / (math.pi / 180)
 
 
 def deg_to_rad(x):
-    return x * (math.pi/180)
+    return x * (math.pi / 180)
 
 
 def to_tuple(inval):
