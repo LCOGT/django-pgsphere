@@ -6,8 +6,8 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-pgsphere',
-    version='0.1',
-    packages=['pgsphere'],
+    version='0.2',
+    packages=['pgsphere', 'pgsphere.migrations'],
     include_package_data=True,
     license='GPL',
     description='A django app that adds pgsphere fields to django models',
