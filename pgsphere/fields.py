@@ -44,13 +44,17 @@ class SBoxField(models.Field):
 
     def to_python(self, value):
         if value is None:
+            return None
+        return str(value)
+
+    def from_db_value(self, value, expression, connection, context):
+        if value is None:
             return value
         return parse_sbox(value, to_deg=True)
 
-    def from_db_value(self, value, expression, connection, context):
-        return self.to_python(value)
-
-    def get_prep_value(self, value):
+    def get_db_prep_value(self, value, connection, prepared=True):
+        if value is None:
+            return value
         return str(parse_sbox(value, to_deg=False))
 
     def get_prep_lookup(self, lookup_type, value):
