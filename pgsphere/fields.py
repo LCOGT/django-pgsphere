@@ -6,6 +6,8 @@ import math
 
 
 def to_tuple(inval):
+    if isinstance(inval, list):
+        return tuple(inval)
     try:
         val = make_tuple(inval)
     except (ValueError, SyntaxError):
