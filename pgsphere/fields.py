@@ -85,12 +85,16 @@ class SPointField(models.Field):
     def to_python(self, value):
         if value is None:
             return value
-        return parse_spoint(value, to_deg=True)
+        return str(value)
 
     def from_db_value(self, value, expression, connection, context):
-        return self.to_python(value)
+        if value is None:
+            return value
+        return parse_spoint(value, to_deg=True)
 
-    def get_prep_value(self, value):
+    def get_db_prep_value(self, value, connection, prepared=True):
+        if value is None:
+            return value
         return str(parse_spoint(value, to_deg=False))
 
     def get_prep_lookup(self, lookup_type, value):
